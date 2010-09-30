@@ -40,6 +40,8 @@ class $PLUGINNAME(OpenMayaMPx.MPxNode):
             inValue = inData.asFloat()
             
             # Compute the output values
+            raise NotImplementedError,"insert here your algorithm"
+            
             resultValue = inValue*100
             
             # Store them on the output plugs            
