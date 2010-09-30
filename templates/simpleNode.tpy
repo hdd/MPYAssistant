@@ -1,0 +1,91 @@
+"""
+name   : $PLUGINNAME
+author : $AUTHOR
+date   : $DATE 
+
+$DOC
+"""
+
+import sys
+import maya.OpenMaya as OpenMaya
+import maya.OpenMayaMPx as OpenMayaMPx
+
+kPluginNodeName = "$PLUGINNAME"
+kPluginNodeId = OpenMaya.MTypeId($NODEID)
+
+#simple Exception
+class $PLUGINNAMEError(Exception):
+    def __init__(self, value):
+        self.value=value
+        
+    def __str__(self):
+        return repr(self.value)
+
+#    node definition
+class $PLUGINNAME(OpenMayaMPx.MPxNode):
+    # class variables
+    inAttr = OpenMaya.MObject()
+    outAttr = OpenMaya.MObject()
+
+    def __init__(self):
+        OpenMayaMPx.MPxNode.__init__(self)
+        
+    def compute(self, plug, data):
+        
+        # Check that the requested recompute is one of the output values
+        if plug == $PLUGINNAME.outAttr:
+            
+            # Read the input values
+            inData = data.inputValue($PLUGINNAME.inAttr)
+            inValue = inData.asFloat()
+            
+            # Compute the output values
+            resultValue = inValue*100
+            
+            # Store them on the output plugs            
+            outputHandle = data.outputValue($PLUGINNAME.outvalue)
+            outputHandle.setFloat(resultValue)
+            data.setClean(plug)        
+            
+        else:
+            return OpenMaya.MStatus.kUnknownParameter       
+        return OpenMaya.MStatus.kSuccess
+    
+def nodeCreator():
+    return OpenMayaMPx.asMPxPtr( $PLUGINNAME() )
+
+def nodeInitializer():
+    numAttrIn = OpenMaya.MFnNumericAttribute()
+    numAttrOut = OpenMaya.MFnNumericAttribute()
+    
+    # Setup the input attributes
+    $PLUGINNAME.inAttr = numAttrIn.create("inAttr","in",OpenMaya.MFnNumericData.kFloat, 0.0)
+    numAttrIn.setStorable(True)
+    
+    # Setup the output attributes    
+    $PLUGINNAME.outAttr = numAttrOut.create("outAttr","out",OpenMaya.MFnNumericData.kFloat, 0.0)
+    numAttrOut.setWritable(False)
+    numAttrOut.setStorable(False)
+    
+    # Add the attributes to the node
+    $PLUGINNAME.addAttribute($PLUGINNAME.inAttr)
+    $PLUGINNAME.addAttribute($PLUGINNAME.outAttr)
+    
+    # Set the attribute dependencies
+    $PLUGINNAME.attributeAffects($PLUGINNAME.inAttr,$PLUGINNAME.outAttr)
+    
+# initialize the script plug-in
+def initializePlugin(mobject):
+    mplugin = OpenMayaMPx.MFnPlugin(mobject)
+    try:
+        mplugin.registerNode( kPluginNodeName, kPluginNodeId, nodeCreator, nodeInitializer)
+    except:
+        raise $NODENAMEError , "Failed to register node: %s" % kPluginNodeName
+    
+# uninitialize the script plug-in
+def uninitializePlugin(mobject):
+    mplugin = OpenMayaMPx.MFnPlugin(mobject)
+    try:
+        mplugin.deregisterNode( kPluginNodeId )
+    except:
+        raise $NODENAMEError , "Failed to deregister node: %s" % kPluginNodeName
