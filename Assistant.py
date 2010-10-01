@@ -41,13 +41,17 @@ class Assistant(ui_class,base_class):
         
         datas=AssistantLib.pluginDatas
         
+        #    get the plugin Type
         cbId = self.CB_pluginType.currentIndex()
         cbText = self.CB_pluginType.itemText(cbId)
         template = AssistantLib.templateMapping[str(cbText)]
-        
         datas["$PLUGINTYPE"]=template
         
-        datas["$PLUGINNAME"]=self.TX_pluginName.text()
+        # get the plugin Name
+        plugname = str(self.TX_pluginName.text())
+        if plugname.find(" ")!=-1:
+            raise Exception , "pluginName can't contain spaces"
+        datas["$PLUGINNAME"]=plugname
         
         datas["$AUTHOR"]=self.TX_authorName.text()
         
@@ -55,6 +59,7 @@ class Assistant(ui_class,base_class):
         
         datas["$DOCS"]=self.TX_description.toPlainText()
         
+        # run the builder
         AssistantLib.generate(datas)
         
         

@@ -23,12 +23,7 @@ templateMapping["Deformer Node"]="deformerNode"
 templateMapping["Simple Vommand"]="simpleCommand"
 templateMapping["Ik Handle"]="ikHandle"
 
-
 defaultNodesIds=["0x87005","0x8700B","0x87010"]
-
-
-
-
 
 def getCurrentPath():
     """
@@ -52,7 +47,6 @@ def getFileTemplate(pluginDatas):
         
         for template in templates:
             templateName=os.path.basename(template).split(".")[0]
-            
             if not pluginDatas["$PLUGINTYPE"]:
                 raise Exception ,"No template name has been provided"
             
@@ -95,8 +89,9 @@ def fillTemplate(templateFile,pluginDatas):
             for variable , replacement in pluginDatas.iteritems():
                 if not replacement:
                     raise Exception , "A missing fariable has been found : %s" %variable
+                
                 if line.find(variable) != -1:
-                    returnDatas.append(line.replace(variable,replacement))
+                    returnDatas.append(line.replace(str(variable),str(replacement)))
         else:
             returnDatas.append(line)
             
