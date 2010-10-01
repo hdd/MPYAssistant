@@ -15,10 +15,10 @@ class Assistant(UiAssistant.Ui_Dialog,QtGui.QDialog):
     def getValues(self):
         datas=AssistantLib.pluginDatas
         datas["$PLUGINTYPE"]=self.CB_pluginTipe
-        AssistantLib.pluginDatas["$PLUGINNAME"]=self.TX_pluginName
-        AssistantLib.pluginDatas["$AUTHOR"]=self.TX_authorName
-        AssistantLib.pluginDatas["$DATE"]=datetime.datetime.now()
-        
+        datas["$PLUGINNAME"]=self.TX_pluginName
+        datas["$AUTHOR"]=self.TX_authorName
+        datas["$DATE"]=datetime.datetime.now()
+        datas["$DOCS"]=datetime.datetime.now()       
         
         
 App=QtGui.QApplication(sys.argv)

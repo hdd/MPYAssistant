@@ -3,7 +3,7 @@ name   : $PLUGINNAME
 author : $AUTHOR
 date   : $DATE 
 
-$DOC
+$DOCS
 """
 
 import sys

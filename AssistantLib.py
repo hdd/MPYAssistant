@@ -8,6 +8,7 @@ pluginDatas["$PLUGINTYPE"]=None
 pluginDatas["$PLUGINNAME"]=None
 pluginDatas["$AUTHOR"]=None
 pluginDatas["$DATE"]=None
+pluginDatas["$DOCS"]=None
 
 templateExtension=".tpy"
 
