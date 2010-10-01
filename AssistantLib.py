@@ -13,8 +13,14 @@ pluginDatas["$DOCS"]=None
 templateExtension=".tpy"
 
 templateMapping={}
-templateMapping["simple"]="simpleNode"
-templateMapping["deformer"]="deformerNode"
+templateMapping["simple node"]="simpleNode"
+templateMapping["deformer node"]="deformerNode"
+templateMapping["simple command"]="simpleCommand"
+templateMapping["ikHandle"]="ikHandle"
+
+
+defaultNodesIds=["0x87005","0x8700B","0x87010"]
+
 
 
 def getCurrentPath():

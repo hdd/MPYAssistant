@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'UIAssistant.ui'
 #
-# Created: Fri Oct  1 00:34:50 2010
+# Created: Fri Oct  1 01:14:53 2010
 #      by: PyQt4 UI code generator 4.7.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,9 +36,6 @@ class Ui_Dialog(object):
         self.gridLayout.addWidget(self.label_2, 0, 0, 1, 1)
         self.CB_pluginTipe = QtGui.QComboBox(self.tab)
         self.CB_pluginTipe.setObjectName("CB_pluginTipe")
-        self.CB_pluginTipe.addItem("")
-        self.CB_pluginTipe.addItem("")
-        self.CB_pluginTipe.addItem("")
         self.gridLayout.addWidget(self.CB_pluginTipe, 0, 1, 1, 1)
         self.label_3 = QtGui.QLabel(self.tab)
         self.label_3.setObjectName("label_3")
@@ -58,9 +55,6 @@ class Ui_Dialog(object):
         self.CB_pluginId = QtGui.QComboBox(self.tab)
         self.CB_pluginId.setEditable(True)
         self.CB_pluginId.setObjectName("CB_pluginId")
-        self.CB_pluginId.addItem("")
-        self.CB_pluginId.addItem("")
-        self.CB_pluginId.addItem("")
         self.gridLayout.addWidget(self.CB_pluginId, 3, 1, 1, 1)
         self.label_6 = QtGui.QLabel(self.tab)
         self.label_6.setObjectName("label_6")
@@ -72,10 +66,12 @@ class Ui_Dialog(object):
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName("tab_2")
-        self.label_7 = QtGui.QLabel(self.tab_2)
-        self.label_7.setGeometry(QtCore.QRect(20, 30, 411, 111))
-        self.label_7.setWordWrap(True)
-        self.label_7.setObjectName("label_7")
+        self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab_2)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.webView = QtWebKit.QWebView(self.tab_2)
+        self.webView.setUrl(QtCore.QUrl("file:///about.html"))
+        self.webView.setObjectName("webView")
+        self.verticalLayout_3.addWidget(self.webView)
         self.tabWidget.addTab(self.tab_2, "")
         self.verticalLayout.addWidget(self.tabWidget)
         self.BT_generate = QtGui.QPushButton(Dialog)
@@ -83,7 +79,7 @@ class Ui_Dialog(object):
         self.verticalLayout.addWidget(self.BT_generate)
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -97,19 +93,12 @@ class Ui_Dialog(object):
 "<td style=\"border: none;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Maya Python Plugins Assistant</p></td></tr></table></body></html>", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("Dialog", "Plugin Type", None, QtGui.QApplication.UnicodeUTF8))
-        self.CB_pluginTipe.setItemText(0, QtGui.QApplication.translate("Dialog", "Simple Maya Node", None, QtGui.QApplication.UnicodeUTF8))
-        self.CB_pluginTipe.setItemText(1, QtGui.QApplication.translate("Dialog", "Deformer Node", None, QtGui.QApplication.UnicodeUTF8))
-        self.CB_pluginTipe.setItemText(2, QtGui.QApplication.translate("Dialog", "Command", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("Dialog", "Plugin Name", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("Dialog", "Author Name", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("Dialog", "Plugin Id", None, QtGui.QApplication.UnicodeUTF8))
-        self.CB_pluginId.setItemText(0, QtGui.QApplication.translate("Dialog", "0x87005", None, QtGui.QApplication.UnicodeUTF8))
-        self.CB_pluginId.setItemText(1, QtGui.QApplication.translate("Dialog", "0x8700B", None, QtGui.QApplication.UnicodeUTF8))
-        self.CB_pluginId.setItemText(2, QtGui.QApplication.translate("Dialog", "0x87010", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("Dialog", "Description", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("Dialog", "Basic Informations", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_7.setText(QtGui.QApplication.translate("Dialog", "Something smart\n"
-"the provided nodes ids are taken from the standar maya examples , remember to change them to something unique, before releasing it", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtGui.QApplication.translate("Dialog", "About", None, QtGui.QApplication.UnicodeUTF8))
         self.BT_generate.setText(QtGui.QApplication.translate("Dialog", "Generate", None, QtGui.QApplication.UnicodeUTF8))
 
+from PyQt4 import QtWebKit

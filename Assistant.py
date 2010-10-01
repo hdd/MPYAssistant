@@ -12,6 +12,14 @@ class Assistant(UiAssistant.Ui_Dialog,QtGui.QDialog):
         super(Assistant,self).__init__()
         self.setupUi(self)
         
+        pluginTypes=AssistantLib.templateMapping
+        for type in pluginTypes:
+            self.CB_pluginTipe.addItem(type)
+            
+        defaultIds=AssistantLib.defaultNodesIds
+        for id in defaultIds:
+            self.CB_pluginId.addItem(id)
+        
     def getValues(self):
         datas=AssistantLib.pluginDatas
         datas["$PLUGINTYPE"]=self.CB_pluginTipe

@@ -55,23 +55,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="CB_pluginTipe">
-           <item>
-            <property name="text">
-             <string>Simple Node</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Deformer Node</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Command</string>
-            </property>
-           </item>
-          </widget>
+          <widget class="QComboBox" name="CB_pluginTipe"/>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_3">
@@ -105,21 +89,6 @@ p, li { white-space: pre-wrap; }
            <property name="editable">
             <bool>true</bool>
            </property>
-           <item>
-            <property name="text">
-             <string>0x87005</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>0x8700B</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>0x87010</string>
-            </property>
-           </item>
           </widget>
          </item>
          <item row="4" column="0">
