@@ -1,7 +1,12 @@
 import os
 import sys
 import glob
-import cStringIO
+
+#    setting up the logger
+import logging
+logging.basicConfig()
+log = logging.getLogger("AssistantLib")
+log.setLevel(logging.DEBUG)
 
 pluginDatas={}
 pluginDatas["$PLUGINTYPE"]=None
@@ -13,13 +18,15 @@ pluginDatas["$DOCS"]=None
 templateExtension=".tpy"
 
 templateMapping={}
-templateMapping["simple node"]="simpleNode"
-templateMapping["deformer node"]="deformerNode"
-templateMapping["simple command"]="simpleCommand"
-templateMapping["ikHandle"]="ikHandle"
+templateMapping["Simple Node"]="simpleNode"
+templateMapping["Deformer Node"]="deformerNode"
+templateMapping["Simple Vommand"]="simpleCommand"
+templateMapping["Ik Handle"]="ikHandle"
 
 
 defaultNodesIds=["0x87005","0x8700B","0x87010"]
+
+
 
 
 
