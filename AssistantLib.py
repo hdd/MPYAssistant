@@ -88,6 +88,9 @@ def fillTemplate(templateFile,pluginDatas):
     """
     fill the template with the given plugin specs
     """
+    if not templateFile:
+        raise Exception, "No template has been found" 
+    
     file = open(templateFile,"r")
     lines=file.readlines()
     
@@ -96,7 +99,7 @@ def fillTemplate(templateFile,pluginDatas):
         if line.find("$") != -1:
             for variable , replacement in pluginDatas.iteritems():
                 if not replacement:
-                    raise Exception , "A missing fariable has been found : %s" %variable
+                    raise Exception , "A missing variable has been found : %s" %variable
                 
                 if line.find(variable) != -1:
                     returnDatas.append(line.replace(str(variable),str(replacement)))

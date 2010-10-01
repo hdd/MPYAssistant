@@ -12,6 +12,7 @@ import AssistantLib
 ui_class, base_class = uic.loadUiType("ui/UIAssistant.ui")
 
 class Assistant(ui_class,base_class):
+    
     def __init__(self):
         super(Assistant,self).__init__()
         self.setupUi(self)
