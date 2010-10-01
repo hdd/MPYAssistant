@@ -1,0 +1,55 @@
+"""
+name   : $PLUGINNAME
+author : $AUTHOR
+date   : $DATE 
+
+$DOCS
+"""
+
+import sys
+import maya.OpenMaya as OpenMaya
+import maya.OpenMayaMPx as OpenMayaMPx
+
+kPluginNodeName = "$PLUGINNAME"
+
+#simple Exception
+class $PLUGINNAMEError(Exception):
+    def __init__(self, value):
+        self.value=value
+        
+    def __str__(self):
+        return repr(self.value)
+
+# command
+class $PLUGINNAME(OpenMayaMPx.MPxCommand):
+    
+    def __init__(self):
+        OpenMayaMPx.MPxCommand.__init__(self)
+        
+    def doIt(self,argList):
+        print "Hello I'm $PLUGINNAME"
+        
+        
+# Creator
+def cmdCreator():
+    return OpenMayaMPx.asMPxPtr( $PLUGINNAME() )
+
+
+# Initialize the script plug-in
+def initializePlugin(mobject):
+    mplugin = OpenMayaMPx.MFnPlugin(mobject)
+    try:
+        mplugin.registerCommand( kPluginCmdName, cmdCreator )
+    except:
+        sys.stderr.write( "Failed to register command: %s\n" % kPluginCmdName )
+        raise
+
+
+# Uninitialize the script plug-in
+def uninitializePlugin(mobject):
+    mplugin = OpenMayaMPx.MFnPlugin(mobject)
+    try:
+        mplugin.deregisterCommand( kPluginCmdName )
+    except:
+        sys.stderr.write( "Failed to unregister command: %s\n" % kPluginCmdName )
+        raise
