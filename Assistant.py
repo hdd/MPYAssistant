@@ -24,16 +24,24 @@ class Assistant(ui_class,base_class):
         
     def fillDefaultValues(self):
         pluginTypes=AssistantLib.templateMapping
+        
+        #    set plugin types
         for type in pluginTypes:
             self.CB_pluginType.addItem(type)
-            
+        
+        #    set nodeIds
         defaultIds=AssistantLib.defaultNodesIds
         for id in defaultIds:
             self.CB_pluginId.addItem(id)
-            
+        
+        #    user name
         username = os.getenv("USER")
-        self.TX_pluginName.setText("Change Me")
         self.TX_authorName.setText(username)
+        
+        #    plugin name
+        self.TX_pluginName.setText("Change Me")
+        
+        # docs
         self.TX_description.setPlainText("fill it with a plugin description")
         
         

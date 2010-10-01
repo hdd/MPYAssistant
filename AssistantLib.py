@@ -17,13 +17,21 @@ pluginDatas["$DOCS"]=None
 
 templateExtension="tpy"
 
+#    template name mapper
 templateMapping={}
 templateMapping["Simple Node"]="simpleNode"
 templateMapping["Deformer Node"]="deformerNode"
 templateMapping["Simple Vommand"]="simpleCommand"
 templateMapping["Ik Handle"]="ikHandle"
 
-defaultNodesIds=["0x87005","0x8700B","0x87010"]
+#    test ids from maya dev-kit
+defaultNodesIds=["0x87005",\
+                 "0x8700B",\
+                 "0x87010",\
+                 "0x87012",\
+                 "0x87018",\
+                 "0x87016",\
+                 "0x8700E"]
 
 def getCurrentPath():
     """

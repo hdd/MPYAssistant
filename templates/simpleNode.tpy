@@ -82,7 +82,7 @@ def initializePlugin(mobject):
     try:
         mplugin.registerNode( kPluginNodeName, kPluginNodeId, nodeCreator, nodeInitializer)
     except:
-        raise $NODENAMEError , "Failed to register node: %s" % kPluginNodeName
+        raise $PLUGINNAMEError , "Failed to register node: %s" % kPluginNodeName
     
 # uninitialize the script plug-in
 def uninitializePlugin(mobject):
@@ -90,4 +90,4 @@ def uninitializePlugin(mobject):
     try:
         mplugin.deregisterNode( kPluginNodeId )
     except:
-        raise $NODENAMEError , "Failed to deregister node: %s" % kPluginNodeName
+        raise $PLUGINNAMEError , "Failed to deregister node: %s" % kPluginNodeName
