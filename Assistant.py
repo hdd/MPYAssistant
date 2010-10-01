@@ -1,16 +1,21 @@
+#/usr/env/bin python
+
+#    default modules
 import os
 import sys
 import datetime
 
+#   qt
 from PyQt4 import QtGui , uic
 from PyQt4 import QtCore
 
-import ui.UIAssistant as UiAssistant
+#    local libs
 import AssistantLib 
 
-
+#    import interface
 ui_class, base_class = uic.loadUiType("ui/UIAssistant.ui")
 
+#    interface class
 class Assistant(ui_class,base_class):
     
     def __init__(self):
@@ -60,6 +65,7 @@ class Assistant(ui_class,base_class):
         plugname = str(self.TX_pluginName.text())
         if plugname.find(" ")!=-1:
             raise Exception , "pluginName can't contain spaces"
+        
         datas["$PLUGINNAME"]=plugname
         
         datas["$AUTHOR"]=self.TX_authorName.text()

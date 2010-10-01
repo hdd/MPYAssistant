@@ -1,3 +1,4 @@
+#    import system modules
 import os
 import sys
 import glob
@@ -8,6 +9,7 @@ logging.basicConfig()
 log = logging.getLogger("AssistantLib")
 log.setLevel(logging.DEBUG)
 
+#    data replacement
 pluginDatas={}
 pluginDatas["$PLUGINTYPE"]=None
 pluginDatas["$PLUGINNAME"]=None
@@ -15,13 +17,14 @@ pluginDatas["$AUTHOR"]=None
 pluginDatas["$DATE"]=None
 pluginDatas["$DOCS"]=None
 
+#    template extension
 templateExtension="tpy"
 
 #    template name mapper
 templateMapping={}
 templateMapping["Simple Node"]="simpleNode"
 templateMapping["Deformer Node"]="deformerNode"
-templateMapping["Simple Vommand"]="simpleCommand"
+templateMapping["Simple Command"]="simpleCommand"
 templateMapping["Ik Handle"]="ikHandle"
 
 #    test ids from maya dev-kit
