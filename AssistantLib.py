@@ -54,12 +54,14 @@ def getFileTemplate(pluginDatas):
     if os.path.exists(templateFolder):
         templates= glob.glob("%s/*.%s"%(templateFolder,templateExtension))
         if not templates:
-            raise Exception , "No template file has been found"
+            log.error("No template file has been found")
+            raise Exception
         
         for template in templates:
             templateName=os.path.basename(template).split(".")[0]
             if not pluginDatas["$PLUGINTYPE"]:
-                raise Exception ,"No template name has been provided"
+                log.error("No template name has been provided")
+                raise Exception
             
             if templateName == pluginDatas["$PLUGINTYPE"]:
                 returnTemplate=template
@@ -74,7 +76,8 @@ def writeFile(datas,pluginDatas):
     return the replaced file
     """
     if not datas:
-        return Exception , "an error occured file datas is empty "
+        log.error("an error occured file datas is empty ")
+        raise Exception
     
     returnFile=None
     currentPath = getCurrentPath()
@@ -102,7 +105,8 @@ def fillTemplate(templateFile,pluginDatas):
         if line.find("$") != -1:
             for variable , replacement in pluginDatas.iteritems():
                 if not replacement:
-                    raise Exception , "A missing variable has been found : %s" %variable
+                    log.error("A missing variable has been found : %s" %variable)
+                    raise Exception
                 
                 if line.find(variable) != -1:
                     returnDatas.append(line.replace(str(variable),str(replacement)))
@@ -111,6 +115,7 @@ def fillTemplate(templateFile,pluginDatas):
             
     returnFile = "".join(returnDatas)
     file.close()    
+    
     return returnFile
 
 

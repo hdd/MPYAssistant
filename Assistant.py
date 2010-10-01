@@ -51,6 +51,8 @@ class Assistant(ui_class,base_class):
         self.TX_description.setPlainText("fill it with a plugin description")
         
         
+        self.WB_about.setUrl(QtCore.QUrl("about.html"))
+        
     def run(self):
         
         datas=AssistantLib.pluginDatas
