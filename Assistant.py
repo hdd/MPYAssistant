@@ -16,11 +16,16 @@ class Assistant(ui_class,base_class):
         super(Assistant,self).__init__()
         self.setupUi(self)
         self.fillDefaultValues()
+        self.setupConnections()
+        
+    def setupConnections(self):
+        QtCore.QObject.connect(self.BT_generate,QtCore.SIGNAL("clicked()"),self.run)
+        
         
     def fillDefaultValues(self):
         pluginTypes=AssistantLib.templateMapping
         for type in pluginTypes:
-            self.CB_pluginTipe.addItem(type)
+            self.CB_pluginType.addItem(type)
             
         defaultIds=AssistantLib.defaultNodesIds
         for id in defaultIds:
@@ -32,13 +37,27 @@ class Assistant(ui_class,base_class):
         self.TX_description.setPlainText("fill it with a plugin description")
         
         
-    def getValues(self):
+    def run(self):
+        
         datas=AssistantLib.pluginDatas
-        datas["$PLUGINTYPE"]=self.CB_pluginTipe
-        datas["$PLUGINNAME"]=self.TX_pluginName
-        datas["$AUTHOR"]=self.TX_authorName
+        
+        cbId = self.CB_pluginType.currentIndex()
+        cbText = self.CB_pluginType.itemText(cbId)
+        template = AssistantLib.templateMapping[str(cbText)]
+        
+        datas["$PLUGINTYPE"]=template
+        
+        datas["$PLUGINNAME"]=self.TX_pluginName.text()
+        
+        datas["$AUTHOR"]=self.TX_authorName.text()
+        
         datas["$DATE"]=datetime.datetime.now()
-        datas["$DOCS"]=datetime.datetime.now()       
+        
+        datas["$DOCS"]=self.TX_description.toPlainText()
+        
+        AssistantLib.generate(datas)
+        
+        
         
 if __name__ == "__main__":      
     App=QtGui.QApplication(sys.argv)

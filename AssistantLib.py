@@ -15,7 +15,7 @@ pluginDatas["$AUTHOR"]=None
 pluginDatas["$DATE"]=None
 pluginDatas["$DOCS"]=None
 
-templateExtension=".tpy"
+templateExtension="tpy"
 
 templateMapping={}
 templateMapping["Simple Node"]="simpleNode"
@@ -47,7 +47,6 @@ def getFileTemplate(pluginDatas):
     templateFolder="%s/templates/"%currentPath
     if os.path.exists(templateFolder):
         templates= glob.glob("%s/*.%s"%(templateFolder,templateExtension))
-        
         if not templates:
             raise Exception , "No template file has been found"
         
