@@ -1,13 +1,20 @@
 import sys
 import datetime
 
-from PyQt4 import QtGui
+from PyQt4 import QtGui , uic
 from PyQt4 import QtCore
 
 import ui.UIAssistant as UiAssistant
 import AssistantLib 
 
-class Assistant(UiAssistant.Ui_Dialog,QtGui.QDialog):
+
+ui_class, base_class = uic.loadUiType("ui/UIAssistant.ui")
+print ui_class 
+print base_class
+
+#print assistantUi
+
+class Assistant(ui_class,base_class):
     def __init__(self):
         super(Assistant,self).__init__()
         self.setupUi(self)
