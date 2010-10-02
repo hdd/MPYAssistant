@@ -29,9 +29,10 @@ class Assistant(ui_class,base_class):
         
         
     def fillDefaultValues(self):
-        pluginTypes=AssistantLib.templateMapping
         
-        #    set plugin types
+        #    load the templates mapping
+        #    sand et plugin types
+        pluginTypes=AssistantLib.templateMapping
         for type in pluginTypes:
             self.CB_pluginType.addItem(type)
         
@@ -50,7 +51,7 @@ class Assistant(ui_class,base_class):
         # docs
         self.TX_description.setPlainText("fill it with a plugin description")
         
-        
+        #set about page
         self.WB_about.setUrl(QtCore.QUrl("about.html"))
         
     def run(self):
