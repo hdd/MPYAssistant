@@ -13,6 +13,7 @@ log.setLevel(logging.DEBUG)
 pluginDatas={}
 pluginDatas["$PLUGINTYPE"]=None
 pluginDatas["$PLUGINNAME"]=None
+pluginDatas["$NODEID"]=None
 pluginDatas["$AUTHOR"]=None
 pluginDatas["$DATE"]=None
 pluginDatas["$DOCS"]=None
@@ -23,9 +24,9 @@ templateExtension="tpy"
 #    template name mapper
 templateMapping={}
 templateMapping["Simple Node"]="simpleNode"
-templateMapping["Deformer Node"]="deformerNode"
 templateMapping["Simple Command"]="simpleCommand"
-templateMapping["Ik Handle"]="ikHandle"
+templateMapping["Simple Locator"]="simpleLocator"
+
 
 #    test ids from maya dev-kit
 defaultNodesIds=["0x87005",\
