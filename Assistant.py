@@ -15,6 +15,7 @@ import AssistantLib
 #    import interface
 ui_class, base_class = uic.loadUiType("ui/UIAssistant.ui")
 
+
 #    interface class
 class Assistant(ui_class,base_class):
     
@@ -64,7 +65,7 @@ class Assistant(ui_class,base_class):
         template = AssistantLib.templateMapping[str(cbText)]
         datas["$PLUGINTYPE"]=template
         
-        #    get the plugin Type
+        #    get the plugin id
         cbId_ = self.CB_pluginId.currentIndex()
         cbText_ = self.CB_pluginId.itemText(cbId_)
         datas["$NODEID"]=str(cbText_)       
@@ -72,6 +73,7 @@ class Assistant(ui_class,base_class):
         
         # get the plugin Name
         plugname = str(self.TX_pluginName.text())
+        
         if plugname.find(" ")!=-1:
             raise Exception , "pluginName can't contain spaces"
         
